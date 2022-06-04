@@ -37,26 +37,26 @@ public class ListaEnc<T extends Comparable<T>> extends Lista<T> {
 
     //====Incluir um Elemento na Posição específica======
     public void incluir(T elemento, int posicao) {
-        // fix the position
+
         if (posicao < 0) {
             posicao = 0;
         }
         if (posicao > tamanho) {
             posicao = tamanho;
         }
-        // if the list is empty, make it be the only element
+        // ================Verifica se está vazio======================
         if (inicio == null) {
             inicio = new No<T>(elemento);
             throw new IllegalArgumentException("Posição Inválida!");
 
         }
-        // if adding at the front of the list...
+
         else if (posicao == 0) {
             No temp = new No<T>(elemento);
             temp.prox = inicio;
             inicio = temp;
         }
-        // else find the correct position and insert
+
         else {
             No<T> temp = inicio;
             for (int i = 1; i < posicao; i += 1) {
@@ -66,7 +66,7 @@ public class ListaEnc<T extends Comparable<T>> extends Lista<T> {
             novoNo.prox = temp.prox;
             temp.prox = novoNo;
         }
-        // the list is now one value longer
+
         tamanho += 1;
     }
 
@@ -101,15 +101,15 @@ public class ListaEnc<T extends Comparable<T>> extends Lista<T> {
                     -1;
 
         }
-        // if nothing in the list, do nothing
+
         if (inicio == null)
             return;
-        // if removing the head element...
+
         if (posicao == 0) {
             inicio = inicio.prox;
 
         }
-        // else advance to the correct position and remove
+
         else {
             No<T> temp = inicio;
             for (int i=1; i<posicao; i+=1) {
@@ -119,7 +119,7 @@ public class ListaEnc<T extends Comparable<T>> extends Lista<T> {
             temp.prox = temp.prox.prox;
 
         }
-        // reduce the length of the list
+
         tamanho -= 1;
 
     }
